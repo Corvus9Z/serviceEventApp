@@ -1,0 +1,88 @@
+.sign-up-form{
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  box-shadow: 04px 8px rgba(0,0,0,0.1);
+}
+.form-title{
+  text-align: center;
+  font-size: 24px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 20px;;
+
+}
+.form-group {
+  margin-bottom: 15px;
+}
+.form-group label{
+ display: block;
+ font-weight: 500;
+ color: #555;
+ margin-bottom: 5px;
+}
+.form-control{
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid  #ced4da;
+  border-radius: 4px;
+  transition: border-color 0.3s ease;
+
+}
+.form-control:focus{
+  border-color: #80bdff;
+  outline: none;
+  box-shadow: 0 0 px rgba(0,123,255,0.5);
+}
+.error-message small{
+  color: #dc3545;
+  font-size: 0.875em;
+}
+.submit-button{
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.submit-button:hover{
+  background-color: #0056b3;
+
+}
+.submit-button:disabled{
+  background-color: #6c757d;
+  cursor: not-allowed;
+}
+.toast {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 15px 25px;
+  border-radius: 8px;
+  font-weight: bold;
+  color: white;
+  animation: slideIn 0.5s ease forwards;
+  z-index: 9999;
+}
+
+.success-toast {
+  background-color: #28a745; /* verde */
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}

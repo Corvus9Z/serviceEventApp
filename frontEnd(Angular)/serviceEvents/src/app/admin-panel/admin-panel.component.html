@@ -1,0 +1,57 @@
+<div class="admin-panel-container">
+    <h2>🛠️ Admin Panel</h2>
+  
+    <div class="tab-buttons">
+      <button [class.active]="activeTab === 'myCreated'" (click)="selectTab('myCreated')">
+        📅 My Created Events
+      </button>
+      <button [class.active]="activeTab === 'allEvents'" (click)="selectTab('allEvents')">
+        📂 All Events
+      </button>
+      <button [class.active]="activeTab === 'users'" (click)="selectTab('users')">
+        👥 User Management
+      </button>
+    </div>
+  
+    <div class="tab-content">
+      <!-- My Created Events -->
+      <app-my-created-events *ngIf="activeTab === 'myCreated'"></app-my-created-events>
+  
+      <!-- All Events -->
+      <div *ngIf="activeTab === 'allEvents'">
+        <ul *ngIf="allEvents.length > 0">
+          <li *ngFor="let event of allEvents" class="event-item">
+            <h3>{{ event.title }}</h3>
+            <p>{{ event.description }}</p>
+            <p><strong>Date:</strong> {{ event.startDate | date:'medium' }} - {{ event.endDate | date:'medium' }}</p>
+            <p><strong>Location:</strong> {{ event.location || 'Unspecified' }}</p>
+            <p><strong>Organizer:</strong> {{ event.organizerFullName || 'Unspecified' }}</p>
+  
+            <div class="event-actions">
+              <button (click)="editEvent(event)" class="edit-btn">✏️ Edit</button>
+              <button (click)="deleteEvent(event.id)" class="delete-btn">🗑️ Delete</button>
+            </div>
+          </li>
+        </ul>
+        <p *ngIf="allEvents.length === 0" class="no-results">😕 No events found.</p>
+      </div>
+  
+      <!-- User Management -->
+      <div *ngIf="activeTab === 'users'">
+        <ul *ngIf="users.length > 0">
+          <li *ngFor="let user of users" class="event-item">
+            <h3>{{ user.name }} {{ user.lastName }}</h3>
+            <p><strong>Email:</strong> {{ user.email }}</p>
+            <p><strong>Role:</strong> {{ getUserRoles(user) }}</p>
+  
+            <div class="event-actions">
+              <button (click)="editUser(user)" class="edit-btn">✏️ Edit</button>
+              <button (click)="deleteUser(user.id)" class="delete-btn">🗑️ Delete</button>
+            </div>
+          </li>
+        </ul>
+        <p *ngIf="users.length === 0" class="no-results">🙁 No users found.</p>
+      </div>
+    </div>
+  </div>
+  

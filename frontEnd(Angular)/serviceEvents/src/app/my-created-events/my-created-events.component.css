@@ -1,0 +1,210 @@
+/* GENERAL */
+h2 {
+  text-align: center;
+  color: #333;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+/* LOADER */
+.loading-container {
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/* MESAJE DE SUCCES ȘI EROARE */
+.success-message {
+  color: green;
+  font-weight: bold;
+  text-align: center;
+}
+
+.error-message {
+  color: red;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* EVENIMENTE GRID */
+.event-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+/* EVENIMENT CARD */
+.event-card {
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out;
+  text-align: center;
+}
+
+.event-card:hover {
+  transform: scale(1.03);
+}
+
+.event-description {
+  font-size: 14px;
+  color: #555;
+}
+
+.event-date {
+  font-size: 13px;
+  color: #888;
+  margin: 10px 0;
+}
+
+/* BUTOANE EVENIMENTE */
+.event-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.edit-button {
+  background-color: #007bff;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.delete-button {
+  background-color: red;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* MODAL */
+.modal-overlay {
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 400px;
+  max-width: 90%;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+/* FORM INPUT STILIZAT */
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+  text-align: left;
+}
+
+.form-control {
+  width: 100%;
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* BUTOANE MODAL */
+.modal-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+.save-button {
+  background-color: #28a745;
+  color: white;
+  padding: 10px;
+}
+
+.cancel-button {
+  background-color: gray;
+  color: white;
+  padding: 10px;
+}
+
+/* ANIMAȚIE MESAJ FĂRĂ EVENIMENTE */
+.no-events-container {
+  text-align: center;
+  margin-top: 40px;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.no-events-text {
+  font-size: 18px;
+  font-weight: bold;
+  color: #666;
+}
+
+.create-event-button {
+  margin-top: 15px;
+  padding: 10px 15px;
+  background-color: #28a745;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.toast {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: #28a745;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-weight: bold;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 9999;
+  animation: fadeInOut 3s ease forwards;
+}
+
+.success-toast {
+  background-color: #28a745; /* Verde */
+}
+
+.delete-toast {
+  background-color: #dc3545; /* Roșu */
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  10% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+}

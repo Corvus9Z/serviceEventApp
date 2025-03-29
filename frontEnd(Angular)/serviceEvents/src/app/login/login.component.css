@@ -1,0 +1,86 @@
+/* Stiluri pentru formularul de log-in */
+
+.login-form {
+    max-width: 400px; /* Setează lățimea maximă a formularului */
+    margin: 0 auto; /* Centrează formularul pe orizontală */
+    padding: 20px; /* Spațiu interior pentru formular */
+    background-color: #f8f9fa; /* Setează culoarea de fundal a formularului */
+    border-radius: 8px; /* Rotunjire a colțurilor pentru aspect plăcut */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adaugă o umbră pentru efect de adâncime */
+  }
+  
+  .form-title {
+    text-align: center; /* Centrează textul titlului */
+    font-size: 24px; /* Setează dimensiunea fontului pentru titlu */
+    font-weight: 600; /* Grosime mai mare pentru a evidenția titlul */
+    color: #333; /* Culoare text închisă */
+    margin-bottom: 20px; /* Spațiu sub titlu */
+  }
+  
+  .form-group {
+    margin-bottom: 15px; /* Spațiu între câmpurile formularului */
+  }
+  
+  .form-group label {
+    display: block; /* Face ca label-ul să ocupe toată lățimea */
+    font-weight: 500; /* Grosime medie pentru textul etichetei */
+    color: #555; /* Culoare gri pentru textul etichetei */
+    margin-bottom: 5px; /* Spațiu între etichetă și câmpul de input */
+  }
+  
+  .form-control {
+    width: 100%; /* Face input-ul să ocupe toată lățimea disponibilă */
+    padding: 10px; /* Spațiu interior pentru textul din input */
+    font-size: 16px; /* Dimensiunea textului din input */
+    border: 1px solid #ced4da; /* Margine gri pentru input */
+    border-radius: 4px; /* Rotunjire a colțurilor input-ului */
+    transition: border-color 0.3s ease; /* Tranziție pentru schimbarea culorii marginii */
+  }
+  
+  .form-control:focus {
+    border-color: #80bdff; /* Schimbă culoarea marginii la albastru când input-ul este activ */
+    outline: none; /* Elimină conturul implicit */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Adaugă o umbră albastră când input-ul este activ */
+  }
+  
+  .error-message small {
+    color: #dc3545; /* Roșu pentru a evidenția mesajele de eroare */
+    font-size: 0.875em; /* Dimensiune mai mică pentru textul de eroare */
+  }
+  
+  .submit-button {
+    width: 100%; /* Face butonul să ocupe toată lățimea containerului */
+    padding: 10px; /* Spațiu interior pentru textul din buton */
+    background-color: #007bff; /* Setează culoarea de fundal albastră pentru buton */
+    color: #fff; /* Culoare albă pentru textul butonului */
+    font-size: 16px; /* Dimensiunea textului din buton */
+    border: none; /* Elimină marginea implicită a butonului */
+    border-radius: 4px; /* Rotunjire a colțurilor butonului */
+    cursor: pointer; /* Schimbă cursorul la pointer pentru a indica că e clicabil */
+    transition: background-color 0.3s ease; /* Tranziție pentru schimbarea culorii de fundal la hover */
+  }
+  
+  .submit-button:hover {
+    background-color: #0056b3; /* Schimbă culoarea butonului la o nuanță mai închisă la hover */
+  }
+  
+  .submit-button:disabled {
+    background-color: #6c757d; /* Culoare gri pentru buton când este dezactivat */
+    cursor: not-allowed; /* Cursorul indică că butonul nu poate fi apăsat */
+  }
+ 
+
+  .login-toast-error {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #dc3545;
+    color: #fff;
+    padding: 12px 18px;
+    border-radius: 8px;
+    font-weight: bold;
+    z-index: 9999;
+    animation: fadeInOut 3s ease-in-out;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+  }
+  

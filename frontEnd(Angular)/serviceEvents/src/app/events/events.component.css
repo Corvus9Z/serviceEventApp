@@ -1,0 +1,170 @@
+/* Stil pentru titlul paginii */
+h2 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* Listă de evenimente */
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin: 15px 0;
+  padding: 15px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+}
+
+li:hover {
+  transform: scale(1.02);
+}
+
+/* Stil pentru titlul fiecărui eveniment */
+li h3 {
+  color: #007bff;
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+li p {
+  margin: 5px 0;
+  color: #555;
+}
+
+strong {
+  color: #333;
+}
+
+/* Container pentru acțiunile evenimentului */
+.event-actions {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Stil pentru butonul de Join activ */
+.join-button {
+  padding: 8px 16px;
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+  background-color: #4CAF50; /* Verde pentru butonul activ */
+  color: white;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.join-button:hover {
+  background-color: #45a049;
+}
+
+/* Stil pentru butonul Already Joined */
+.joined-button {
+  padding: 8px 16px;
+  font-size: 14px;
+  background-color: #777;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: not-allowed;
+}
+
+/* Stil pentru butoanele dezactivate (Admin, Organizer, User neautentificat) */
+.disabled-button {
+  padding: 8px 16px;
+  font-size: 14px;
+  background-color: #ccc; 
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: not-allowed;
+  position: relative;
+}
+
+/* Tooltip pentru butonul dezactivat */
+.disabled-button:hover::after {
+  content: attr(title); /* Afișează mesajul definit în atributul title */
+  position: absolute;
+  background-color: #333;
+  color: #fff;
+  padding: 5px;
+  border-radius: 4px;
+  font-size: 12px;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  z-index: 1;
+}
+
+/* Stil pentru popup */
+.popup {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  background-color: white;
+  padding: 20px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  z-index: 1000;
+  text-align: center;
+  display: block;
+}
+
+/* Fundal semi-transparent când apare popup-ul */
+.popup::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: -1;
+}
+
+/* Buton de închidere */
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 20px;
+  cursor: pointer;
+  color: red;
+}
+
+.close-btn:hover {
+  color: darkred;
+}
+.toast {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  min-width: 250px;
+  padding: 15px;
+  border-radius: 5px;
+  z-index: 9999;
+  animation: fadeInOut 3s forwards;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.toast-success {
+  background-color: #4CAF50; /* verde */
+  color: white;
+}
+
+@keyframes fadeInOut {
+  0% { opacity: 0; transform: translateY(-20px); }
+  10% { opacity: 1; transform: translateY(0); }
+  90% { opacity: 1; }
+  100% { opacity: 0; transform: translateY(-20px); }
+}

@@ -1,0 +1,35 @@
+<nav>
+  <ul>
+    <li><a routerLink="/">Home</a></li>
+    <li><a routerLink="/events">Events</a></li>
+
+    <li class="account-menu">
+      <a href="javascript:void(0)">Account</a>
+      <ul class="dropdown">
+        <li *ngIf="!(isLoggedIn$ | async)">
+          <a routerLink="/sign-up">Sign Up</a>
+        </li>
+
+        <li *ngIf="!(isLoggedIn$ | async)">
+          <a routerLink="/login">Login</a>
+        </li>
+
+        <li *ngIf="isUser$ | async"><a routerLink="/my-events">My Events</a></li>
+        <li *ngIf="isOrganizer$ | async"><a routerLink="/my-created-events">My Created Events</a></li>
+        <li *ngIf="isAdmin$ | async"><a routerLink="/admin-panel">Admin Panel</a></li>
+        <li *ngIf="(isOrganizer$ | async) || (isAdmin$ | async)">
+          <a routerLink="/create-event">Create Events</a>
+        </li>
+
+        <!-- ✅ Nou: My Account vizibil doar pentru userii logați -->
+        <li *ngIf="isLoggedIn$ | async">
+          <a routerLink="/my-account">My Account</a>
+        </li>
+
+        <li *ngIf="isLoggedIn$ | async">
+          <a (click)="logout()">Logout</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>

@@ -1,0 +1,91 @@
+<h2>📂 All Events</h2>
+
+<!-- Loader -->
+<div *ngIf="loading" class="loading-container">
+  <p>⏳ Loading events...</p>
+</div>
+
+<!-- Mesaje -->
+<p *ngIf="successMessage" class="success-message">{{ successMessage }}</p>
+<p *ngIf="errorMessage" class="error-message">{{ errorMessage }}</p>
+
+<!-- Lista Evenimentelor -->
+<div *ngIf="!loading && events.length > 0" class="event-grid">
+  <div *ngFor="let event of events" class="event-card">
+    <h3>{{ event.title }}</h3>
+    <p class="event-description">{{ event.description }}</p>
+    <p class="event-date"><strong>🗓️ Date:</strong> {{ event.startDate | date:'medium' }} - {{ event.endDate | date:'medium' }}</p>
+    <p><strong>Location:</strong> {{ event.location || 'Unspecified' }}</p>
+    <p><strong>Organizer:</strong> {{ event.organizerFullName || 'Unspecified' }}</p>
+
+    <div class="event-buttons">
+      <button (click)="editEvent(event)" class="edit-button">✏️ Edit</button>
+      <button (click)="openDeleteModal(event)" class="delete-button">🗑️ Delete</button>
+    </div>
+  </div>
+</div>
+
+<!-- Dacă nu există evenimente -->
+<div *ngIf="!loading && events.length === 0" class="no-events-container">
+  <p class="no-events-text">😕 No events available.</p>
+</div>
+
+<!-- Modal Edit -->
+<div *ngIf="editingEvent" class="modal-overlay fade-in">
+  <div class="modal-content">
+    <h3>✏️ Edit Event</h3>
+
+    <div class="form-group">
+      <label>Title:</label>
+      <input [(ngModel)]="editingEvent.title" type="text" class="form-control" />
+    </div>
+
+    <div class="form-group">
+      <label>Description:</label>
+      <textarea [(ngModel)]="editingEvent.description" class="form-control"></textarea>
+    </div>
+
+    <div class="form-group">
+      <label>Start Date:</label>
+      <input [(ngModel)]="editingEvent.startDate" type="datetime-local" class="form-control" />
+    </div>
+
+    <div class="form-group">
+      <label>End Date:</label>
+      <input [(ngModel)]="editingEvent.endDate" type="datetime-local" class="form-control" />
+    </div>
+
+    <div class="form-group">
+      <label>Location:</label>
+      <input [(ngModel)]="editingEvent.location" type="text" class="form-control" />
+    </div>
+
+    <div class="modal-buttons">
+      <button (click)="saveEvent()" class="save-button">✔ Save</button>
+      <button (click)="editingEvent = null" class="cancel-button">✖ Cancel</button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Delete -->
+<div *ngIf="showDeleteModal" class="modal-overlay fade-in">
+  <div class="modal-content">
+    <h3>🗑️ Confirm Deletion</h3>
+    <p>Are you sure you want to delete "<strong>{{ eventToDelete?.title }}</strong>"?</p>
+    <p class="warning-text">⚠️ This action cannot be undone.</p>
+
+    <div class="modal-buttons">
+      <button (click)="confirmDelete()" class="save-button">✔️ Yes, Delete</button>
+      <button (click)="closeDeleteModal()" class="cancel-button">❌ Cancel</button>
+    </div>
+  </div>
+</div>
+
+<!-- Toast-uri -->
+<div class="toast success-toast" *ngIf="showEditToast">
+  ✏️ Event updated successfully!
+</div>
+
+<div class="toast delete-toast" *ngIf="showDeleteToast">
+  🗑️ Event deleted successfully!
+</div>

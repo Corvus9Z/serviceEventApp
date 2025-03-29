@@ -1,0 +1,39 @@
+<h2>Home Page</h2>
+
+<!-- ✅ TOAST de login -->
+<div *ngIf="showLoginToast" class="toast success-toast">
+  ✅ Welcome {{ userFullName }}!
+</div>
+
+<!-- 🔴 Toast logout -->
+<div *ngIf="showLogoutToast" class="toast logout-toast">
+  🔒 You've been logged out.
+</div>
+
+<!-- 🟢 Account updated toast -->
+<div *ngIf="showAccountUpdatedToast" class="toast success-toast">
+  Your account has been updated successfully!
+</div>
+
+<p>Upcoming Events:</p>
+
+<div *ngIf="loading">
+  <p>Loading data...</p>
+</div>
+
+<div *ngIf="!loading && events.length > 0">
+  <ul>
+    <li *ngFor="let event of events">
+      <h3>{{ event.title }}</h3>
+      <p><strong>Description:</strong> {{ event.description }}</p>
+      <p><strong>Start Date:</strong> {{ event.startDate | date: 'medium' }}</p>
+      <p><strong>End Date:</strong> {{ event.endDate | date: 'medium' }}</p>
+      <p><strong>Organizer:</strong> {{ event.organizerFullName || 'Unknown' }}</p>
+      <p><strong>Location:</strong> {{ event.location || 'Not specified' }}</p>
+    </li>
+  </ul>
+</div>
+
+<div *ngIf="!loading && events.length === 0">
+  <p>No events available at the moment.</p>
+</div>

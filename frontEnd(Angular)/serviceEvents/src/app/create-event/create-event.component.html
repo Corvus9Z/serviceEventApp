@@ -1,0 +1,44 @@
+<div class="create-event-form">
+  <h2>Create New Event</h2>
+  <form [formGroup]="createEventForm" (ngSubmit)="onSubmit()">
+    
+    <label for="title">Event Title</label>
+    <input type="text" id="title" formControlName="title" required />
+    <div *ngIf="f['title'].touched && f['title'].invalid">
+      <small *ngIf="f['title'].errors?.['required']">Title is required.</small>
+      <small *ngIf="f['title'].errors?.['minlength']">Title must be at least 5 characters.</small>
+      <small *ngIf="f['title'].errors?.['maxlength']">Title can have a maximum of 100 characters.</small>
+    </div>
+
+    <label for="description">Description</label>
+    <textarea id="description" formControlName="description" required></textarea>
+    <div *ngIf="f['description'].touched && f['description'].invalid">
+      <small *ngIf="f['description'].errors?.['required']">Description is required.</small>
+      <small *ngIf="f['description'].errors?.['minlength']">Description must have at least 20 characters.</small>
+    </div>
+
+    <label for="startDate">Start Date and Time</label>
+<input type="datetime-local" id="startDate" formControlName="startDate" required />
+<div *ngIf="f['startDate'].touched && f['startDate'].invalid">
+  <small *ngIf="f['startDate'].errors?.['required']">Start date is required.</small>
+  <small *ngIf="f['startDate'].errors?.['notFutureOrPresent']">Start date must be in the present or future.</small>
+</div>
+
+
+<label for="endDate">End Date and Time</label>
+<input type="datetime-local" id="endDate" formControlName="endDate" required />
+<div *ngIf="f['endDate'].touched && f['endDate'].invalid">
+  <small *ngIf="f['endDate'].errors?.['required']">End date is required.</small>
+  <small *ngIf="f['endDate'].errors?.['endBeforeStart']">End date must be after or equal to start date.</small>
+</div>
+
+
+    <label for="location">Location</label>
+    <input type="text" id="location" formControlName="location" required />
+    <div *ngIf="f['location'].touched && f['location'].invalid">
+      <small *ngIf="f['location'].errors?.['required']">Location is required.</small>
+    </div>
+
+    <button type="submit" [disabled]="createEventForm.invalid">Create Event</button>
+  </form>
+</div>

@@ -1,0 +1,108 @@
+.admin-panel-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 30px;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  h2 {
+    text-align: center;
+    font-size: 32px;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 30px;
+  }
+  
+  .tab-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+    margin-bottom: 25px;
+  }
+  
+  .tab-buttons button {
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: 600;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    background-color: #f0f0f0;
+    color: #2c3e50;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .tab-buttons button.active {
+    background-color: #007bff;
+    color: white;
+    border-color: #0056b3;
+    box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3);
+  }
+  
+  .tab-buttons button:hover:not(.active) {
+    background-color: #e0e0e0;
+  }
+  
+  .tab-content {
+    animation: fadeIn 0.3s ease-in-out;
+  }
+  
+  .event-item {
+    background: #f9f9f9;
+    border-left: 4px solid #007bff;
+    margin: 15px 0;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+  }
+  
+  .event-item h3 {
+    color: #007bff;
+    margin: 0 0 10px;
+  }
+  
+  .event-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+  }
+  
+  .edit-btn {
+    background-color: #007bff;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .delete-btn {
+    background-color: #dc3545;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .no-results {
+    text-align: center;
+    color: #888;
+    font-style: italic;
+    margin-top: 30px;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  

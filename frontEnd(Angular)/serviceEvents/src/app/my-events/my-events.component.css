@@ -1,0 +1,73 @@
+/* Container general */
+.events-container {
+    margin: 20px;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Titlul general */
+  .events-container h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #333;
+  }
+  
+  /* Lista de evenimente */
+  .events-list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .event-item {
+    padding: 15px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    background-color: #ffffff;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  
+  .event-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Titlul fiecărui eveniment */
+  .event-item h3 {
+    font-size: 20px;
+    margin-bottom: 8px;
+    color: #007bff;
+  }
+  
+  .event-item p {
+    margin: 5px 0;
+    color: #555;
+  }
+  
+  /* Butonul de detalii */
+  .view-details-btn {
+    padding: 8px 12px;
+    font-size: 14px;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+  
+  .view-details-btn:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Mesajul pentru lipsa evenimentelor */
+  .no-events-message {
+    font-size: 16px;
+    color: #888;
+    text-align: center;
+    margin: 20px 0;
+  }
+  

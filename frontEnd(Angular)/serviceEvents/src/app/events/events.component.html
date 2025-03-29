@@ -1,0 +1,86 @@
+<h2>All Events</h2>
+
+<!-- Loader -->
+<div *ngIf="loading">
+  <p>Loading data...</p>
+</div>
+
+<!-- Afișează lista de evenimente -->
+<div *ngIf="!loading && events.length > 0">
+  <ul>
+    <li *ngFor="let event of events">
+      <h3>{{ event.title }}</h3>
+      <p>{{ event.description }}</p>
+      <p><strong>Date:</strong> {{ event.startDate | date:'medium' }} - {{ event.endDate | date:'medium' }}</p>
+      <p><strong>Organizer:</strong> {{ event.organizerFullName || 'Unknown' }}</p>
+      <p><strong>Location:</strong> {{ event.location || 'Not specified' }}</p>
+
+      <!-- Buton Join sau mesaj Already Joined -->
+      <div class="event-actions">
+
+        <!-- Buton pentru utilizatorii normali care NU sunt înscriși -->
+        <button 
+          *ngIf="isUser() && !isUserJoined(event.id)" 
+          (click)="joinEvent(event.id)" 
+          class="join-button">
+          Join
+        </button>
+
+        <!-- Buton dezactivat pentru utilizatori deja înscriși -->
+        <button *ngIf="isUserJoined(event.id)" class="joined-button" disabled>
+          Already Joined
+        </button>
+
+        <!-- Buton dezactivat pentru utilizatori NEAUTENTIFICAȚI -->
+        <button 
+          *ngIf="!isLoggedIn()" 
+          class="disabled-button"
+          title="You need an account to join events"
+          disabled>
+          Join
+        </button>
+
+        <!-- Buton dezactivat pentru ADMIN cu mesaj specific -->
+        <button 
+          *ngIf="isAdmin()" 
+          class="disabled-button"
+          title="Admins cannot join events"
+          disabled>
+          Admins cannot join
+        </button>
+
+        <!-- Buton dezactivat pentru ORGANIZER cu mesaj specific -->
+        <button 
+          *ngIf="isOrganizer()" 
+          class="disabled-button"
+          title="Organizers do not need to join their own events"
+          disabled>
+          Organizers cannot join
+        </button>
+        
+      </div>
+
+      <hr>
+    </li>
+  </ul>
+</div>
+
+<!-- Dacă nu există evenimente -->
+<div *ngIf="!loading && events.length === 0">
+  <p>No events available at the moment.</p>
+</div>
+
+<!-- Popup pentru mesaje de eroare -->
+<div id="errorPopup" class="popup" [ngStyle]="{ 'display': errorMessage ? 'block' : 'none' }">
+  <div class="popup-content">
+    <span class="close-btn" (click)="closePopup()">&times;</span>
+    <p>{{ errorMessage }}</p>
+  </div>
+</div>
+
+<!-- Toast de succes -->
+<div id="successToast" class="toast toast-success" [ngStyle]="{ 'display': successMessage ? 'block' : 'none' }">
+  <div class="toast-content">
+    <span class="toast-text">{{ successMessage }}</span>
+  </div>
+</div>

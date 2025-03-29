@@ -1,0 +1,39 @@
+<!-- Formular de log-in, asociat cu loginForm și metoda onLogin din TypeScript -->
+<form [formGroup]="loginForm" (ngSubmit)="onLogin()" class="login-form">
+  <!-- ❌ Toast de eroare login -->
+<div *ngIf="loginErrorMessage" class="login-toast-error">
+  {{ loginErrorMessage }}
+</div>
+
+    <!-- Titlul formularului de log-in -->
+    <h2 class="form-title">Log In</h2>
+  
+    <!-- Grupul de input pentru email -->
+    <div class="form-group">
+      <label for="email">Email:</label> <!-- Eticheta pentru câmpul de email -->
+      <input id="email" formControlName="email" type="email" class="form-control" /> <!-- Câmpul input pentru email, legat de loginForm -->
+      
+      <!-- Mesaje de eroare afișate dacă emailul este invalid sau necompletat -->
+      <div *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched" class="error-message">
+        <small *ngIf="loginForm.get('email')?.errors?.['required']">Email is required.</small> <!-- Afișat când emailul lipsește -->
+        <small *ngIf="loginForm.get('email')?.errors?.['email']">Email is invalid.</small> <!-- Afișat când emailul este invalid -->
+      </div>
+    </div>
+  
+    <!-- Grupul de input pentru parolă -->
+    <div class="form-group">
+      <label for="password">Password:</label> <!-- Eticheta pentru câmpul de parolă -->
+      <input id="password" formControlName="password" type="password" class="form-control" /> <!-- Câmpul input pentru parolă -->
+  
+      <!-- Mesaje de eroare afișate dacă parola este invalidă sau prea scurtă -->
+      <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched" class="error-message">
+        <small *ngIf="loginForm.get('password')?.errors?.['required']">Password is required.</small> <!-- Afișat când parola lipsește -->
+        <small *ngIf="loginForm.get('password')?.errors?.['minlength']">Password must be at least 8 characters long.</small> <!-- Afișat când parola e prea scurtă -->
+      </div>
+    </div>
+  
+    <!-- Butonul de log-in, activ doar când formularul este valid -->
+    <button type="submit" [disabled]="loginForm.invalid" class="submit-button">Log In</button>
+
+  </form>
+  

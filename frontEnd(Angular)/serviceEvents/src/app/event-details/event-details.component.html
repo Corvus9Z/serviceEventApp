@@ -1,0 +1,46 @@
+<div class="event-details-container" *ngIf="event; else loading">
+  <h2>{{ event.title }}</h2>
+
+  <div class="event-info">
+    <p><strong>Date:</strong> {{ event.startDate | date:'medium' }} - {{ event.endDate | date:'medium' }}</p>
+    <p><strong>Organizer:</strong> {{ event.organizerFullName || 'Unknown' }}</p>
+    <p><strong>Location:</strong> {{ event.location || 'Not specified' }}</p>
+  </div>
+
+  <div class="event-description">
+    <h3>Description</h3>
+    <p>{{ event.description }}</p>
+  </div>
+
+  <!-- ✅ Formularul de comentarii -->
+  <div class="comment-form">
+    <h3>Add a Comment</h3>
+    <textarea [(ngModel)]="newComment" placeholder="Your comment..."></textarea>
+    <button (click)="submitComment()">Submit</button>
+  </div>
+
+  <div class="comments-section">
+    <h3>Comments</h3>
+    <div *ngIf="comments && comments.length > 0; else noComments">
+      <div *ngFor="let comment of comments" class="comment">
+        <p>
+          <strong>{{ comment.userFullName || 'Unknown User' }}:</strong>
+          {{ comment.content }}
+        </p>
+        <small>{{ comment.createdAt | date:'short' }}</small>
+      </div>
+    </div>
+    <ng-template #noComments>
+      <p>No comments yet.</p>
+    </ng-template>
+  </div>
+</div>
+
+<ng-template #loading>
+  <p>Loading event details...</p>
+</ng-template>
+
+<!-- ✅ Toast -->
+<div *ngIf="toastMessage" class="toast success-toast">
+  {{ toastMessage }}
+</div>

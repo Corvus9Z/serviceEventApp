@@ -1,0 +1,18 @@
+<div *ngIf="myEvents.length > 0; else noEvents" class="events-container">
+  <h2>My Events</h2>
+  <ul class="events-list">
+    <li *ngFor="let event of myEvents" class="event-item">
+      <h3>{{ event.title }}</h3>
+      <p>{{ event.description }}</p>
+      <p><strong>Start:</strong> {{ event.startDate | date: 'medium' }}</p>
+      <p><strong>End:</strong> {{ event.endDate | date: 'medium' }}</p>
+      <p><strong>Organizer:</strong> {{ event.organizerFullName || 'Unknown' }}</p> <!-- ✅ nou -->
+      <p><strong>Location:</strong> {{ event.location || 'Not specified' }}</p> <!-- deja aveai asta functional -->
+      <button class="view-details-btn" (click)="viewEventDetails(event.id)">View Details</button>
+    </li>
+  </ul>
+</div>
+
+<ng-template #noEvents>
+  <p class="no-events-message">You are not signed up for any events.</p>
+</ng-template>
